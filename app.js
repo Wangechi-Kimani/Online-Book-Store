@@ -23,7 +23,7 @@ const authRoutes = require('./routes/auth');
 
 const app = express();
 
-const MONGODB_URI = "mongodb+srv://wangechi_k:wangechi_K@onlinestore-bbwik.mongodb.net/online-store?retryWrites=true&w=majority"
+const MONGODB_URI = ""
 
 //new store instance on creating a sesssions collection and storing the session data in the database
 const store = new MongoDBStore({ 
