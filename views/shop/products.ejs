@@ -1,0 +1,93 @@
+<!--  head.ejs  -->
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Nav -->
+    <!-- navigation.ejs -->
+    <%- include('../includes/navigation.ejs') %>
+
+    
+    <main>
+      <div class="wrapper">
+        <% if(prods.length > 0) { %>
+          <div class="row">
+            <div class="col">
+              <div class="product_section m-2 d-flex flex-wrap">
+                <% for(let prod of prods) { %>
+                <div class="product_list border border-rounded p-2">
+                  <img src="/<%= prod.imageUrl %>" alt="<%= prod.title %>" srcset="">
+                  <h5><%= prod.title %></h5>
+                  <p><%= prod.author %></p>
+                  <p>Ksh. <%= prod.price %></p>
+                  <div class="btn__viewDetails__addTiCart d-flex">
+                    <form action="/cart" method="POST">
+                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                      <button class="btn btn-sm border" type="submit">Add to Cart</button>
+                      <input type="hidden" name="productId" value="<%= prod.id %>">
+                    </form>
+                    <a href="/products/<%= prod.id %>" class="btn btn-sm border">View Details</a>
+                  </div>
+                </div>
+                <% } %>
+              </div>
+            </div> <!-- <End of col>  -->
+          </div> <!-- <End of row>  -->
+            <div class="row">
+              <div class="col text-center">
+                <div class="product_list __pagination">
+                  <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage, previousPage: previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage: hasPreviousPage}) %>
+                </div>
+              </div>
+            </div>
+        <% } else { %>
+          <h3>No products found</h3>
+        <% } %>
+      </div>
+    </main>
+
+    
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#staticBackdrop"
+      data-whatever="@mdo">Add To Cart</button>
+     Modal
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/login" method="POST" id="loginForm">
+              <div class="form-group">
+                <label for="email_address" class="col-form-label">Email Address:</label>
+                <input type="email" class="form-control" name="email" id="email_address">
+              </div>
+              <div class="form-group">
+                <label for="password" class="col-form-label">Password:</label>
+                <input type="password" class="form-control" name="password" id="password">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" form="loginForm">Login </button>
+            <p>Not Registered? <a href="/signup">Sign Up</a></p>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Footer -->
+    <%- include('../includes/footer.ejs') %>
+  </div> <!-- End of Container-->
+
+    <!-- end.ejs -->
+  <%- include('../includes/end.ejs') %>

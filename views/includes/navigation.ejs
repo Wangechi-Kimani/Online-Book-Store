@@ -1,0 +1,62 @@
+<!-- Nav Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top border-bottom mb-3">
+    <nav class="navbar">
+      <a class="navbar-brand" href="/">
+        <!-- <img src="img/book1.svg" alt="Ads Meat Yogurt Company Logo"> -->
+        Logo
+      </a>
+    </nav>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto float-right">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/products">Browse All Books</a>
+        </li>
+      <% if(isAuthenticated) { %>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/cart">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/orders">Orders</a>
+        </li>
+      <% } %>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/contact">Contact Us</a>
+        </li>
+        <% if(!isAuthenticated) { %>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="/login">Login</a>
+          </li>
+        <% } else { %>
+        <form action="/logout" method="POST">
+          <li class="nav-item">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <button class="btn btn-sm nav-link text-white" style="background: transparent;" type="submit">Logout</button>
+          </li>
+        </form>
+        <% } %>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="/signup">Signup</a>
+        </li>
+        <% if(isAuthenticated) { %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Admin Panel
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item <%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">Add Product</a>
+            <a class="dropdown-item" href="/admin/products">View All Products</a>
+          </div>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </nav>

@@ -1,0 +1,46 @@
+<!--  head.ejs  -->
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Nav -->
+    <!-- navigation.ejs -->
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+      <% if (prods.length > 0) { %>
+      <div class="row">
+        <div class="col">
+          <div class="product_section text-center m-2 d-flex flex-wrap">
+            <% for (let prod of prods) { %>
+            <div class="product_list border border-rounded p-2">
+              <!-- <img src="img_small/img1.jpg" alt="" srcset=""> -->
+              <img src="/<%= prod.imageUrl %>" alt="<%= prod.title %>" srcset="">
+              <p><%= prod.title %></p>
+              <p><%= prod.author %></p>
+              <p>Ksh. <%= prod.price %></p>
+              <!-- <a href="/admin/edit-product/<%= prod.id %>?edit=true" class="btn btn-sm border">Edit</a> -->
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <input type="hidden" value="<%= prod.id %>" name="productId">
+              <a href="/admin/edit-product/<%= prod.id %>?edit=true" class="btn btn-sm border">Edit</a>
+              <button class="btn btn-sm border" type="button" onclick="deleteProduct(this)">Delete</button>
+            </div>
+            <% } %>
+          </div>
+        </div> <!-- End of col-->
+      </div> <!-- End of row-->
+      <% } else { %>
+      <h1>No products found</h1>
+      <% } %>
+    </main>
+
+    <!-- Footer -->
+    <%- include('../includes/footer.ejs') %>
+  </div> <!-- End of Container-->
+  
+    <!-- end.ejs -->
+  <%- include('../includes/end.ejs') %>
+  <script src="/js/admin.js"></script>

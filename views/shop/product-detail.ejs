@@ -1,0 +1,41 @@
+<!--  head.ejs  -->
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Nav -->
+     <!-- navigation.ejs -->
+    <%- include('../includes/navigation.ejs') %>
+    
+    <main>
+      <div class="row">
+        <div class="col">
+          <div class="product_section m-2 d-flex flex-wrap">
+            <div class="product_list border border-rounded p-2">
+              <img src="/<%= product.imageUrl %>" alt="<%= product.title %>" srcset="">
+              <h5><%= product.title %></h5>
+              <p><%= product.author %></p>
+              <p>Ksh. <%= product.price %></p>
+              <p><%= product.genre %></p>
+              <div class="btn__viewDetails__addTiCart">
+                <form action="/cart" method="POST">
+                  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                  <button class="btn btn-sm border" type="submit">Add to Cart</button>
+                  <input type="hidden" name="productId" value="<%= product.id %>">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div> <!-- <End of col>  -->
+      </div> <!-- <End of row>  -->
+    </main>
+
+    <!-- Footer -->
+    <%- include('../includes/footer.ejs') %>
+  </div> <!-- End of Container-->
+
+    <!-- end.ejs -->
+  <%- include('../includes/end.ejs') %>

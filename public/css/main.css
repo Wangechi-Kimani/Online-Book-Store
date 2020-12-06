@@ -1,0 +1,164 @@
+body {
+    /* background: linear-gradient(to right, #FFDEE9, #B5FFFC); W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: rgb(53, 2, 53);
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Nav */
+nav {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+}
+
+nav a {
+    font-size: 0.9rem;
+}
+
+nav .btn {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    background: transparent;
+}
+
+.dropdown-item {
+    color: rgb(53, 2, 53);
+    font-weight: 700;
+}
+
+/* Carousel */
+/* .carousel img {
+    height: 500px;
+} */
+
+
+/* Index Page */
+/* Section */
+section {
+    background-color: white;
+    color:  rgb(53, 2, 53) ;
+}
+.card-title {
+    font-size: 0.9rem;
+}
+
+.card-text {
+    font-size: 0.8rem;
+}
+
+section .btn {
+    background-color: rgb(53, 2, 53);
+    color: white;
+}
+section  a {
+    color:  rgb(53, 2, 53);
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+section a:hover {
+    color: burlywood;
+}
+
+
+/* Testimonials */
+.testimonials {
+    background-color: white;
+    color:  rgb(53, 2, 53);
+}
+
+
+/* shop/products.ejs Page */
+main {
+    background-color: white;
+    color:  rgb(53, 2, 53);
+}
+
+
+
+.btn__viewDetails__addToCart .btn {
+    background-color:  rgb(53, 2, 53);
+    color: white;
+    font-size: 0.7rem;
+}
+
+.product_list {
+    margin: 5px auto;
+}
+
+.editDeleteForm .btn {
+    background-color:  rgb(53, 2, 53);
+    color: white;
+    font-size: 0.7rem; 
+}
+
+.__pagination {
+    margin-bottom: 7px;
+}
+.__pagination a {
+    color: rgb(53, 2, 53);
+    text-decoration: none;
+    border: 1px solid rgb(53, 2, 53);
+    border-radius: 3px;
+    padding: 0.2rem;
+    
+}
+
+.__pagination a:hover,
+.__pagination a.active {
+    background-color: rgb(152, 149, 155);  
+}
+
+
+/* admin/edit-product.ejs */
+form {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+form .btn {
+    background-color: white;
+    color:  rgb(53, 2, 53);
+}
+
+
+/* shop/cart.ejs */
+.btn-buy-delete .btn {
+    background-color:  rgb(53, 2, 53);
+    color: white;
+    font-size: 0.7rem;
+}
+
+/* auth/login.ejs */
+.errorMessage {
+    font-family: 'Playfair Display', serif;
+    color: red;
+    font-size: 0.9rem;  
+}
+
+.resetLink, .resetLink a {
+    font-family: 'Playfair Display', serif;
+    color: rgb(53, 2, 53);
+    font-size: 0.9rem;
+}
+
+
+
+
+
+/* Footer */
+footer {
+    background-color: white;
+    color:  rgb(53, 2, 53);
+    /* max-height:50px; */
+    font-size: 0.7rem;
+}
+.form-group input.invalid,
+.form-group textarea.invalid {
+  border-color: red;
+}
+

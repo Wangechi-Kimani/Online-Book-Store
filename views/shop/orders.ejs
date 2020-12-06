@@ -1,0 +1,48 @@
+<!--  head.ejs  -->
+<%- include('../includes/head.ejs') %>
+<!-- includes the Braintree JS client SDK -->
+<script src="https://js.braintreegateway.com/web/dropin/1.23.0/js/dropin.min.js"></script>
+
+<!-- includes jQuery -->
+<script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div class="container mb-3">
+    <!-- Nav -->
+    <!-- navigation.ejs -->
+    <%- include('../includes/navigation.ejs') %>
+    
+    
+    <!-- Main -->
+    <main>
+        <% if (orders.length <= 0) { %>
+            <h1>Nothing there!</h1>
+        <% } else { %>
+            <ul class="orders">
+                <% orders.forEach(order => { %>
+                    <li class="orders__item">
+                        <h5>Order - # <%= order._id %> <a href="/orders/<%= order._id %>" class=""> - Print Invoice</a> </h5>
+                        <ul class="orders__products">
+                            <% order.products.forEach(p => { %>
+                                <li class="orders__products-item">
+                                    <p>Title: <%= p.product.title %></p> 
+                                    <p>Quantitiy: <%= p.quantity %></p>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+            <button><a href="/checkout">Check Out</a> </button>
+         <!-- Footer -->
+    <%- include('../includes/footer.ejs') %>
+
+</div>
+<!--End of Container-->
+
+<!-- end.ejs -->
+<%- include('../includes/end.ejs') %>
+       

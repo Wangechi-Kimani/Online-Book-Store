@@ -1,0 +1,97 @@
+<!--  head.ejs  -->
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- Nav -->
+    <!-- navigation.ejs -->
+    <%- include('../includes/navigation.ejs') %>
+    
+    <div class="row">
+      <div class="col-8 m-auto">
+        <% if (errorMessage) { %>
+          <h5 class="errorMessage font-weight-bold"> <%= errorMessage %> </h5>
+        <% } %>
+        <form action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input 
+              type="text" 
+              name="title" 
+              class="form-control <%= validationErrors.find(e => e.param === 'title') ? 'invalid' : '' %>" 
+              id="title" value="<% if (editing || hasError) { %><%= product.title %><% } %>"
+            >
+          </div>
+          <div class="form-group">
+            <label for="price">Price</label>
+            <input 
+              type="number" 
+              class="form-control <%= validationErrors.find(e => e.param === 'price') ? 'invalid' : '' %>" 
+              name="price" 
+              id="price" 
+              step="0.01" 
+              value="<% if (editing || hasError) { %><%= product.price %><% } %>"
+            >
+          </div>
+          <div class="form-group">
+            <label for="author">Author</label>
+            <input 
+              type="text" 
+              name="author" 
+              class="form-control" 
+              id="author" 
+              value="<% if (editing || hasError) { %><%= product.author %><% } %>"
+            >
+          </div>
+          <div class="form-group">
+            <label for="genre">Genre</label>
+            <select class="form-control" name="genre" id="genre">
+              <option>African Fiction</option>
+              <option>Biography</option>
+              <option>Motivational</option>
+              <option>African History</option>
+              <option>Religious</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea 
+              class="form-control <%= validationErrors.find(e => e.param === 'description') ? 'invalid' : '' %>" 
+              name="description" 
+              id="description" 
+              rows="3"><% if (editing || hasError) { %><%= product.description %><% } %>
+            </textarea>
+          </div>
+          <div class="form-group">
+            <label for="image">Image</label>
+            <input 
+              type="file" 
+              name="image" 
+              class="form-control" 
+              id="image" 
+            >
+          </div>
+          <% if (editing) { %>
+            <input type="hidden" value="<%= product._id %>" name="productId">
+          <% } %>
+          <div class="row">
+            <div class="col text-center">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <button type="submit" class="btn btn-lg"><% if (editing) { %>Update Product<% } else { %>Add Product<% } %></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <%- include('../includes/footer.ejs') %>
+
+  </div>
+  <!--End of Container-->
+  
+  <!-- end.ejs -->
+  <%- include('../includes/end.ejs') %>
