@@ -75,7 +75,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Initialize Session middleware
 app.use(session({
-  secret: 'my secret', //this key-value pair is used in assigning hash that secretly stores the id in the Cookie
+  secret: '', //this key-value pair is used in assigning hash that secretly stores the id in the Cookie
   resave:  false, // this means the session will not be saved on every request that is done/every response sent 
   saveUninitialized: false, //this means no session is saved for a request that doesnt need to be saved becoz nothing was changed
   store: store
